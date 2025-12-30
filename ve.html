@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>职业教育 期末</title>
+    <title>职业教育 | Qimo</title>
     <style>
         :root {
             --bg-body: #f9f8f6;
@@ -263,11 +263,21 @@
             transition: all 0.18s ease;
         }
 
-        .author-btn:hover {
+        /* .author-btn:hover {
             color: var(--text-accent);
             background: rgba(94, 112, 135, 0.08);
             text-decoration-style: solid;
+        } */
+
+        /* 仅在支持 hover 的设备上启用 hover，避免手机点击后一直hover */
+        @media (hover: hover) and (pointer: fine) {
+            .author-btn:hover {
+                color: var(--text-accent);
+                background: rgba(94, 112, 135, 0.08);
+                text-decoration-style: solid;
+            }
         }
+
 
         /* 页脚补充说明 */
         .footer-note {
