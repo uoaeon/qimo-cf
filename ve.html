@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>职业教育 期末</title>
+    <style>
+        :root {
+            --bg-body: #f9f8f6;
+            --bg-card: #ffffff;
+            --bg-block: #f4f4f2;
+
+            --text-main: #333333;
+            --text-sub: #888888;
+            --text-accent: #5e7087;
+
+            --border-light: #f0f0f0;
+            --radius: 6px;
+            --spacing: 28px;
+
+            /* 字体栈 */
+            --font-serif: "Songti SC", "Noto Serif SC", "SimSun", "Times New Roman", serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+
+            /* 基础字号变量，默认 15px */
+            --base-font-size: 15px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* HTML 根元素使用变量，rem 单位将基于此缩放 */
+        html {
+            font-size: var(--base-font-size);
+            /* 平滑过渡效果 */
+            transition: font-size 0.2s ease;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.75;
+            padding: 50px 20px;
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* 头部设计 */
+        header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            letter-spacing: 1px;
+        }
+
+        /* 卡片风格 */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: var(--spacing);
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.025);
+            border: 1px solid rgba(0, 0, 0, 0.01);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+        }
+
+        /* 卡片头部 */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .question {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #222;
+            flex: 1;
+            margin-right: 15px;
+            line-height: 1.4;
+        }
+
+        .meta-tag {
+            font-size: 0.75rem;
+            color: #999;
+            font-family: var(--font-sans);
+            background: transparent;
+            border: 1px solid #eee;
+            padding: 2px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+
+        /* 列表样式 */
+        ol.unified-list {
+            list-style: none;
+            counter-reset: item;
+        }
+
+        ol.unified-list>li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        ol.unified-list>li::before {
+            content: counter(item) ".";
+            counter-increment: item;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            color: var(--text-sub);
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            text-align: right;
+            padding-right: 8px;
+            font-weight: normal;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* 小节标题 */
+        .sub-title {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-accent);
+            margin-top: 24px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+
+        .sub-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border-light);
+            margin-left: 10px;
+        }
+
+        /* 概念块 */
+        .concept-block {
+            background-color: var(--bg-block);
+            padding: 20px;
+            border-radius: 4px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-left: 3px solid #dcdcdc;
+        }
+
+        .concept-name {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        /* 代码块样式 */
+        code {
+            font-family: "Menlo", "Consolas", monospace;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            color: #202020;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            overflow-x: auto;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        demicode {
+            font-family: "Menlo", "Consolas", monospace;
+            background: #fff;
+            color: #15658f;
+            font-size: 0.9rem;
+        }
+
+        orange {
+            color: rgb(151, 80, 13);
+        }
+
+        blue {
+            color: rgb(8, 56, 93);
+        }
+
+        purple {
+            color: rgb(112, 31, 146);
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            color: #bbb;
+            font-size: 0.8rem;
+            font-family: var(--font-serif);
+            padding-bottom: 60px;
+            /* 增加底部留白，防止被悬浮按钮遮挡 */
+        }
+
+        .footer-actions {
+            margin-top: 12px;
+        }
+
+        .author-btn {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            color: var(--text-sub);
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            padding: 2px 6px;
+            border-radius: 6px;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 3px;
+            transition: all 0.18s ease;
+        }
+
+        .author-btn:hover {
+            color: var(--text-accent);
+            background: rgba(94, 112, 135, 0.08);
+            text-decoration-style: solid;
+        }
+
+        /* 页脚补充说明 */
+        .footer-note {
+            margin-top: 10px;
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            font-family: var(--font-serif);
+            line-height: 1.65;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--text-main);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+            border-radius: 999px;
+            padding: 10px 14px;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            line-height: 1.35;
+            letter-spacing: 0.2px;
+            max-width: min(520px, calc(100vw - 40px));
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.18s ease, transform 0.22s ease;
+            z-index: 120;
+        }
+
+        .toast.is-show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        @media (max-width: 600px) {
+            .toast {
+                bottom: 20px;
+                font-size: 0.88rem;
+                padding: 10px 12px;
+            }
+        }
+
+        /* 弹窗 */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.22s ease, visibility 0s linear 0.22s;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        }
+
+        .modal-overlay.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transition: opacity 0.22s ease, visibility 0s linear 0s;
+        }
+
+        .modal {
+            width: min(520px, 100%);
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 18px 55px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            transform: translateY(10px) scale(0.985);
+            opacity: 0;
+            transition: transform 0.26s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.22s ease;
+        }
+
+        .modal-overlay.is-open .modal {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .modal-title {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            color: #222;
+        }
+
+        .modal-close {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            color: #888;
+            font-size: 18px;
+            line-height: 1;
+            cursor: pointer;
+            padding: 6px 8px;
+            border-radius: 8px;
+        }
+
+        .modal-body {
+            padding: 16px;
+            color: #444;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            line-height: 1.75;
+        }
+
+        .modal-body a {
+            color: var(--text-accent);
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(94, 112, 135, 0.55);
+        }
+
+        body.modal-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        /* 字体控制悬浮栏 */
+        .font-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 6px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 4px;
+            z-index: 100;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* 闲置时稍微降低不透明度 */
+        .font-controls:not(:hover) {
+            opacity: 0.7;
+            transform: scale(0.95);
+        }
+
+        .font-btn {
+            appearance: none;
+            border: none;
+            background: transparent;
+            color: var(--text-sub);
+            font-family: var(--font-sans);
+            font-size: 14px;
+            font-weight: 600;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .font-btn:hover {
+            background-color: var(--text-accent);
+            color: #fff;
+        }
+
+        .font-btn:active {
+            transform: scale(0.95);
+        }
+
+        .font-display {
+            font-size: 13px;
+            color: var(--text-sub);
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            font-variant-numeric: tabular-nums;
+            cursor: default;
+            user-select: none;
+        }
+
+        @media (max-width: 600px) {
+            .card-header {
+                flex-direction: column-reverse;
+                gap: 8px;
+            }
+
+            .meta-tag {
+                align-self: flex-start;
+                border: none;
+                padding-left: 0;
+            }
+
+            .question {
+                font-size: 1.15rem;
+            }
+
+            /* 移动端调整悬浮按钮位置 */
+            .font-controls {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>期末复习</h1>
+            <div class="subtitle">中国特色现代职业教育体系概论</div>
+        </header>
+
+        <!-- Q1 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">如何调处职业教育两类矛盾？</div>
+                <div class="meta-tag">第二章 题3 P51</div>
+            </div>
+
+            <div class="sub-title">供与求矛盾</div>
+            <ol class="unified-list">
+                <li>政府主管部门牵头，培养主体为主，解决“供好”问题</li>
+                <li>企业为主解决“用好”问题</li>
+            </ol>
+
+            <div class="sub-title">教与学矛盾</div>
+            <ol class="unified-list">
+                <li>政府和学校牵头解决“教好”问题</li>
+                <li>政府和学校联手解决学生“学好”问题</li>
+            </ol>
+        </div>
+
+        <!-- Q2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">第三章 核心知识点</div>
+                <div class="meta-tag">第三章</div>
+            </div>
+
+            <div class="concept-block">
+                <span class="concept-name">“六体”</span>
+                <ol class="unified-list">
+                    <li>培养机构主体：学校</li>
+                    <li>教学主体：教师</li>
+                    <li>学习主体：学生</li>
+                    <li>家庭教育主体：家长</li>
+                    <li>接收就业主体：用人单位</li>
+                    <li>培养机构管理主体：职业院校的主管部门</li>
+                </ol>
+            </div>
+
+            <div class="concept-block">
+                <span class="concept-name">“四环”</span>
+                <p>招生、教育、技能评价、就业</p>
+                <p style="margin-top:8px;">
+                    <code>
+                        <orange>const</orange> <blue>四环互动</blue> <orange>=</orange> <blue>四环</blue>.<purple>map</purple><blue>(</blue><orange>i => i +</orange> <blue>'环节互动')</blue></code>
+                </p>
+            </div>
+
+            <div class="concept-block">
+                <span class="concept-name">“三层转化”</span>
+                <p style="margin-bottom:8px; color:#666;">市场、技能、就业三者之间的转化。</p>
+                <ol class="unified-list">
+                    <li>以市场需求为导向层</li>
+                    <li>以技术技能为特色层</li>
+                    <li>以技术技能就业为目标层</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">分析职业教育二元组合原理的构成</div>
+                <div class="meta-tag">第四章 题1 P89</div>
+            </div>
+            <ol class="unified-list">
+                <code><orange>const</orange> <blue>i</blue> <orange>=</orange> <blue>'的二元组合：'</blue></code>
+                <li>职业教育性质 <demicode>${i}</demicode> 国民教育 与 人力资源开发</li>
+                <li>办学职能 <demicode>${i}</demicode> 学制教育 与 职业培训</li>
+                <li>培养主体 <demicode>${i}</demicode> 学校 与 企业</li>
+                <li>培养目标 <demicode>${i}</demicode> 成才 与 就业</li>
+                <li>学习任务 <demicode>${i}</demicode> 知识 与 技能</li>
+                <li>专业教师能力 <demicode>${i}</demicode> 专业教学能力 与 专业技术能力</li>
+                <li>学生身份 <demicode>${i}</demicode> 学生 与 准职业人</li>
+                <li>教学过程 <demicode>${i}</demicode> 学习过程 与 工作过程</li>
+                <li>校园文化 <demicode>${i}</demicode> 学校文化 与 企业文化</li>
+                <li>服务对象 <demicode>${i}</demicode> 学生 与 企业</li>
+            </ol>
+        </div>
+
+        <!-- Q4 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">列出我国校企深度合作的十种模式</div>
+                <div class="meta-tag">第五章 题3改 P106</div>
+            </div>
+            <ol class="unified-list">
+                <li>共招学生员工</li>
+                <li>共提员工水平</li>
+                <li>共克技术难关</li>
+                <li>共研新尖技术</li>
+                <li>共参专业建设</li>
+                <li>共建课程体系</li>
+                <li>共设实训基地</li>
+                <li>共组师资队伍</li>
+                <li>共评教学质量</li>
+                <li>共促实习就业</li>
+            </ol>
+        </div>
+
+        <!-- Q5 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">分析专业设置与“四度一书”的关系</div>
+                <div class="meta-tag">第六章 题1 P124</div>
+            </div>
+            <p style="margin-bottom: 15px;">专业设置要有“四度一书”作为依据。</p>
+            <div class="concept-block">
+                <span class="concept-name">“四度一书”</span>
+                <ol class="unified-list">
+                    <li>市场需求程度</li>
+                    <li>社会贡献程度</li>
+                    <li>学校能力程度</li>
+                    <li>专业重复程度</li>
+                    <li>职业资格证书或职业技能等级证书</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">简述专业发展的 15 个“一”</div>
+                <div class="meta-tag">第六章 题2改 P124</div>
+            </div>
+            <ol class="unified-list">
+                <li>制定一个德技并修的专业人才培养方案</li>
+                <li>执行一个校企深广度合作培养制度</li>
+                <li>推行一个体现工学一体化特点的专业课课程体系</li>
+                <li>推行一个体现理实一体化特点的公共基础课程体系</li>
+                <li>开发一批学用结合的教材</li>
+                <li>构建一个教学过程与工作过程对接的对接教学模式</li>
+                <li>建设一支由企业实践专家组成的兼职教师队伍</li>
+                <li>健全一批实训基地</li>
+                <li>建设一个以上技术技能大师工作室</li>
+                <li>推行一个体现职业教育特色的学生管理模式</li>
+                <li>奖励一批省级以上科研成果</li>
+                <li>组织一次技术技能节活动</li>
+                <li>推行一个技能评价制度</li>
+                <li>落实一批就业创业服务项目</li>
+                <li>实施一个职业技能培训工作计划</li>
+            </ol>
+        </div>
+
+        <!-- Q7 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">什么叫对接型课程？</div>
+                <div class="meta-tag">第七章 题1 P179</div>
+            </div>
+            <p style="margin-bottom:15px; color:#666;">特指专业课程。</p>
+            <div class="concept-block">
+                <span class="concept-name">对接型课程开发的概念</span>
+                <p style="margin-bottom:10px;">课程开发者 ——</p>
+                <ol class="unified-list">
+                    <li>以培养高素质劳动者和技术技能人才为目标</li>
+                    <li>以技术技能训练和职业素养培育为重点</li>
+                    <li>以课程内容与职业标准对接、学习过程与工作过程对接为标准</li>
+                    <li>按照科学程序确定课程内容和课程数量</li>
+                    <li>构建体现职业性、实用性、技能性特点的课程体系</li>
+                </ol>
+                <p style="margin-top:10px;">—— 的行为过程</p>
+            </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">对接型课程开发的步骤有哪些？</div>
+                <div class="meta-tag">第七章 题2 P179</div>
+            </div>
+            <ol class="unified-list">
+                <li>召开实践专家访谈会</li>
+                <li>转化实践专家访谈会成果</li>
+                <li>设计对接型课程学习任务</li>
+                <li>指定对接型课程计划</li>
+                <li>开发对接型课程资源</li>
+            </ol>
+        </div>
+
+        <!-- Q9 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">列出对接型课程的六步教学法</div>
+                <div class="meta-tag">第八章 题1改 P194</div>
+            </div>
+            <ol class="unified-list">
+                <li>明确任务</li>
+                <li>制定计划</li>
+                <li>审定计划</li>
+                <li>实施计划</li>
+                <li>检查控制</li>
+                <li>验收总结</li>
+            </ol>
+        </div>
+
+        <!-- Q10 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">什么是名副其实的“双师型”教师？</div>
+                <div class="meta-tag">第九章 题1 P213</div>
+            </div>
+            <p style="margin-bottom:15px;">真正的“双师型”教师应具备三个因素</p>
+            <ol class="unified-list">
+                <li><strong>“双能”</strong>：实践技能水平和专业教学能力</li>
+                <li><strong>“双证”</strong>：相应层级专业技术职务证书和职业技能等级证书</li>
+                <li><strong>“一对接”</strong>：能实现教学过程与工作过程对接教学</li>
+            </ol>
+        </div>
+
+        <!-- Q11 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">教学研究的重要步骤有哪些？</div>
+                <div class="meta-tag">第十一章 题2 P246</div>
+            </div>
+            <ol class="unified-list">
+                <li>观察</li>
+                <li>选题</li>
+                <li>集材</li>
+                <li>列纲</li>
+                <li>拟稿</li>
+                <li>改定</li>
+            </ol>
+        </div>
+
+        <!-- Q12 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">职业培训如何建好线上线下两种实训平台？</div>
+                <div class="meta-tag">第十二章 题3 P269</div>
+            </div>
+
+            <div class="sub-title">线上</div>
+            <ol class="unified-list">
+                <li>认识互联网+职业培训教学</li>
+                <li>学校自己开发或与软件公司合作开发，建设<strong>网络设备类平台</strong></li>
+                <li>在完成网络设备类平台建设的基础上，建设<strong>网络学习类平台</strong></li>
+            </ol>
+
+            <div class="sub-title">线下</div>
+            <ol class="unified-list">
+                <li>认识实体性实训基地内涵</li>
+                <li>坚持两个原则：<strong>多功能原则、高端引领原则</strong></li>
+                <li>建设两种类型基地：<strong>教学型实训基地、生产型实训基地</strong></li>
+                <li>区分实训基地两个功能：<strong>实训、服务</strong></li>
+                <li>购置和用好两类设备：<strong>普适性设备、引领性设备</strong></li>
+            </ol>
+        </div>
+
+        <!-- Q13 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">分析技能评价与“双证书”的关系</div>
+                <div class="meta-tag">第十三章 题2 P283</div>
+            </div>
+            <ol class="unified-list">
+                <li>评价学生<strong>学业成绩</strong>的书面证明是<strong>学历证书</strong>（毕业证书）</li>
+                <li>评价学生<strong>技术技能水平</strong>的书面证明是<strong>职业资格证书</strong>或<strong>职业技能等级证书</strong></li>
+            </ol>
+        </div>
+
+        <!-- Q14 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">简述学业质量评价的方法</div>
+                <div class="meta-tag">第十四章 题2 P321</div>
+            </div>
+            <p style="margin-bottom:15px;">学生自评、组间互评、教师评价、企业实践专家评价。</p>
+            <div class="concept-block">
+                <span class="concept-name">“三方评价”</span>
+                <ol class="unified-list">
+                    <li>学生自评</li>
+                    <li>组间互评</li>
+                    <li>教师评价</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Q15 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="question">简述职业学校社团活动改革的基本思路</div>
+                <div class="meta-tag">第十六章 题2 P354</div>
+            </div>
+            <ol class="unified-list">
+                <li>明确社团活动责任主体</li>
+                <li>推行四类社团</li>
+                <li>规范社团活动课程</li>
+                <li>指导教师分工</li>
+                <li>规范活动项目</li>
+                <li>制定社团活动标准</li>
+                <li>动态调整社团活动指导教师、课时、课酬</li>
+                <li>“砌实”指导教师的“门槛”</li>
+                <li>制定并执行相关制度</li>
+            </ol>
+        </div>
+
+        <footer>
+            <div class="footer-note">
+                我想看看不同地区、不同网络环境下的访问响应情况，如果你愿意，可以点击“发送定位”支持我。
+            </div>
+            <div class="footer-actions">
+                <button class="author-btn" id="openAuthorModal" type="button">关于作者</button>
+                <button class="author-btn" id="sendGeolocation" type="button">发送定位</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 字体控制悬浮栏 -->
+    <div class="font-controls">
+        <button class="font-btn" id="fontDecrease" title="减小字号">A-</button>
+        <span class="font-display" id="fontDisplay">15</span>
+        <button class="font-btn" id="fontIncrease" title="增大字号">A+</button>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- 作者弹窗 -->
+    <div class="modal-overlay" id="authorModalOverlay" role="dialog" aria-modal="true"
+        aria-labelledby="authorModalTitle">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title" id="authorModalTitle">关于作者</div>
+                <button class="modal-close" id="closeAuthorModal" type="button" aria-label="关闭弹窗">×</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom:10px;">
+                    邮箱：<a href="mailto:z@qimo.uno">z@qimo.uno</a>
+                </div>
+                <div style="color:#666;">
+                    这个邮箱是真的噢，欢迎反馈与讨论，虽然还是微信来得简单高效
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* 弹窗逻辑 */
+        const openBtn = document.getElementById("openAuthorModal");
+        const overlay = document.getElementById("authorModalOverlay");
+        const closeBtn = document.getElementById("closeAuthorModal");
+        const geoBtn = document.getElementById("sendGeolocation");
+        const isOpen = () => overlay.classList.contains("is-open");
+        let __scrollY = 0;
+
+        const lockScroll = () => {
+            __scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+            document.body.classList.add("modal-open");
+            document.body.style.top = `-${__scrollY}px`;
+        };
+
+        const unlockScroll = () => {
+            document.body.classList.remove("modal-open");
+            document.body.style.top = "";
+            window.scrollTo(0, __scrollY);
+        };
+
+        const openModal = () => {
+            lockScroll();
+            overlay.classList.add("is-open");
+            window.setTimeout(() => closeBtn.focus(), 0);
+        };
+
+        const closeModal = () => {
+            overlay.classList.remove("is-open");
+            unlockScroll();
+            window.setTimeout(() => openBtn.focus(), 0);
+        };
+
+        openBtn.addEventListener("click", openModal);
+        closeBtn.addEventListener("click", closeModal);
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) closeModal();
+        });
+        overlay.addEventListener("wheel", (e) => { if (isOpen()) e.preventDefault(); }, { passive: false });
+        overlay.addEventListener("touchmove", (e) => { if (isOpen()) e.preventDefault(); }, { passive: false });
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && isOpen()) closeModal();
+        });
+
+        /* 测试连接 */
+        const api = 'https://ve-nsfuh87febh98hv.qimo-api.xyz';
+        fetch(api + '/baseinfo');
+
+        /* 定位并上报到后端 /geolocation */
+        (function () {
+            if (!geoBtn) return;
+
+            const toastEl = document.getElementById('toast');
+            let toastTimer = null;
+
+            function showToast(message) {
+                if (!toastEl) return;
+                toastEl.textContent = String(message || '');
+                toastEl.classList.add('is-show');
+                if (toastTimer) window.clearTimeout(toastTimer);
+                toastTimer = window.setTimeout(() => {
+                    toastEl.classList.remove('is-show');
+                }, 2400);
+            }
+
+            function setGeoBtnState(isBusy) {
+                geoBtn.disabled = isBusy;
+                geoBtn.style.opacity = isBusy ? '0.55' : '1';
+                geoBtn.style.pointerEvents = isBusy ? 'none' : 'auto';
+            }
+
+            async function reportToBackend(payload) {
+                try {
+                    const res = await fetch(api + '/geolocation', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    return res && res.ok;
+                } catch (err) {
+                    console.error(err);
+                    return false;
+                }
+            }
+
+            geoBtn.addEventListener('click', () => {
+                setGeoBtnState(true);
+                const startedAt = Date.now();
+
+                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                const networkInfo = connection ? {
+                    effectiveType: connection.effectiveType,
+                    downlink: connection.downlink,
+                    rtt: connection.rtt,
+                    saveData: connection.saveData
+                } : null;
+
+                const basePayload = {
+                    pageTimestamp: Date.now(),
+                    elapsedMs: 0,
+                    userAgent: navigator.userAgent,
+                    network: networkInfo
+                };
+
+                // 不支持定位：仍然上报一次，并感谢支持
+                if (!('geolocation' in navigator)) {
+                    showToast('感谢支持');
+                    basePayload.elapsedMs = Date.now() - startedAt;
+                    reportToBackend({
+                        ...basePayload,
+                        geoSupported: false
+                    }).finally(() => setGeoBtnState(false));
+                    return;
+                }
+
+                showToast('正在获取定位…');
+
+                navigator.geolocation.getCurrentPosition(async (pos) => {
+                    try {
+                        const coords = pos.coords || {};
+                        const payload = {
+                            ...basePayload,
+                            latitude: coords.latitude,
+                            longitude: coords.longitude,
+                            accuracy: coords.accuracy,
+                            altitude: coords.altitude,
+                            altitudeAccuracy: coords.altitudeAccuracy,
+                            heading: coords.heading,
+                            speed: coords.speed,
+                            positionTimestamp: pos.timestamp,
+                            elapsedMs: Date.now() - startedAt
+                        };
+
+                        // 不论后端是否成功接收（除非用户拒绝定位权限），统一感谢支持
+                        await reportToBackend(payload);
+                        showToast('感谢支持');
+                    } catch (err) {
+                        console.error(err);
+                        showToast('感谢支持');
+                    } finally {
+                        setGeoBtnState(false);
+                    }
+                }, (err) => {
+                    console.warn(err);
+
+                    // 用户明确拒绝定位
+                    if (err && err.code === 1) {
+                        showToast('虽然你拒绝了定位权限，但还是感谢支持');
+                        setGeoBtnState(false);
+                        return;
+                    }
+
+                    // 其他失败：仍然上报一次，并感谢支持
+                    basePayload.elapsedMs = Date.now() - startedAt;
+                    reportToBackend({
+                        ...basePayload,
+                        geoSupported: true,
+                        geoError: err ? {
+                            code: err.code,
+                            message: err.message
+                        } : { code: null, message: null }
+                    }).finally(() => {
+                        showToast('感谢支持');
+                        setGeoBtnState(false);
+                    });
+                }, {
+                    enableHighAccuracy: false,
+                    timeout: 10000,
+                    maximumAge: 60000
+                });
+            });
+        })();
+
+        /* 字体控制逻辑 */
+        (function () {
+            const htmlRoot = document.documentElement;
+            const btnDec = document.getElementById('fontDecrease');
+            const btnInc = document.getElementById('fontIncrease');
+            const display = document.getElementById('fontDisplay');
+
+            // 默认值与范围
+            let currentSize = 15;
+            const MIN_SIZE = 12;
+            const MAX_SIZE = 22;
+
+            function updateFont(size) {
+                // 更新 CSS 变量
+                htmlRoot.style.setProperty('--base-font-size', size + 'px');
+                // 更新显示数字
+                display.textContent = size;
+                // 更新状态
+                currentSize = size;
+
+                // 按钮禁用状态逻辑
+                btnDec.style.opacity = size <= MIN_SIZE ? '0.3' : '1';
+                btnDec.style.pointerEvents = size <= MIN_SIZE ? 'none' : 'auto';
+
+                btnInc.style.opacity = size >= MAX_SIZE ? '0.3' : '1';
+                btnInc.style.pointerEvents = size >= MAX_SIZE ? 'none' : 'auto';
+            }
+
+            btnDec.addEventListener('click', () => {
+                if (currentSize > MIN_SIZE) updateFont(currentSize - 1);
+            });
+
+            btnInc.addEventListener('click', () => {
+                if (currentSize < MAX_SIZE) updateFont(currentSize + 1);
+            });
+
+            // 点击中间数字重置
+            display.addEventListener('click', () => {
+                updateFont(15);
+            });
+            display.style.cursor = "pointer";
+            display.title = "点击重置";
+
+            // 初始化一次以设置按钮状态
+            updateFont(currentSize);
+        })();
+    </script>
+</body>
+
+</html>
